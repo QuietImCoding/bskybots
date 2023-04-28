@@ -20,7 +20,10 @@ bash beemoviebot/beemoviebot.sh &
 disown
 ```
 
-### Finally
+### If you want to set up services
+You can run `bash setup.sh` and it will print all the commands you need to run to install and run the systemd services for you. Just copy and paste them back into the shell.
+
+## Finally
 Feel free to build whatever you want on these or deploy your own copies!!
 If you do anything cool, tag me in a post @goose.art on bsky.social :3
 
