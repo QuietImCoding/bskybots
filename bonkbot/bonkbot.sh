@@ -6,8 +6,7 @@ send_meme() {
     fname="templates/$template.png"
     text="$(echo $post | cut -d' ' -f3-)"
     echo "Created image with text $text"
-    bsky post -r $1 -i $fname "$template meme with text: $text" || echo "SOMETHING IS HORRIBLY AWRY"
-    rm $fname
+    bsky post -r $1 -i $fname "$template bonk: $text" || echo "SOMETHING IS HORRIBLY AWRY"
 }
 
 send_reply() {
