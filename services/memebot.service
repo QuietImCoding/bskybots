@@ -6,7 +6,9 @@ Type=simple
 WorkingDirectory=/home/dan/memebot
 Environment=PATH=/home/dan/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/dan/go/bin/
 ExecStart=/bin/bash -l /home/dan/memebot/memebot.sh
-
+Restart=on-failure
+RestartSec=10
+KillMode=process
 
 [Install]
 WantedBy=multi-user.target

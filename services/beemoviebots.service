@@ -6,6 +6,9 @@ Type=simple
 WorkingDirectory=/home/dan/beemoviebot
 Environment=PATH=/home/dan/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/dan/go/bin/
 ExecStart=/bin/bash -l /home/dan/beemoviebot/beemoviebot.sh && /bin/bash /home/dan/beemoviebot/beemoviebomb.sh
+Restart=on-failure
+RestartSec=10
+KillMode=process
 
 [Install]
 WantedBy=multi-user.target
