@@ -1,9 +1,11 @@
 send_meme() {
-    post=$(bsky thread --json "$1" | jq -r '.record.text')
+    post=$(bsky thread --json "$1" | jq -r '.post.record.text')
+    echo $post
     template="$(echo $post | cut -d' ' -f2 | sed 's/[^a-z]//g')"
+    echo $template
     tmpfname="${template}_$RANDOM.png"
     text="$(echo $post | cut -d' ' -f3-)"
-    fontsize=$((2000/(((${#text}+1)/7)**2)))
+    fontsize=$((2000/(((${#text}+1)/7)**2+1)))
     fontsize=$((fontsize>20 ? $fontsize : 20))
     fontsize=$((fontsize<50 ? $fontsize : 50))
     convert "./templates/${template}.png" -gravity South -pointsize $fontsize -annotate +0+100 "$text" $PWD/$tmpfname
