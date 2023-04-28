@@ -3,9 +3,9 @@ Description=Run honkbot service
 
 [Service]
 Type=simple
-WorkingDirectory=/home/dan/honkbot
-Environment=PATH=/home/dan/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/dan/go/bin/
-ExecStart=/bin/bash -l /home/dan/honkbot/honkr.sh
+WorkingDirectory=/home/dan/bskybots/honkbot
+Environment="HOME=/home/dan"
+ExecStart=/bin/bash -l -c 'PATH=/home/dan/go/bin/:$PATH bash honkr.sh'
 Restart=on-failure
 RestartSec=10
 KillMode=process

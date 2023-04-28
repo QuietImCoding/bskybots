@@ -1,11 +1,11 @@
 [Unit]
-Description=Run honkbot service
+Description=Run meme bot service
 
 [Service]
 Type=simple
-WorkingDirectory=/home/dan/memebot
-Environment=PATH=/home/dan/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/dan/go/bin/
-ExecStart=/bin/bash -l /home/dan/memebot/memebot.sh
+WorkingDirectory=/home/dan/bskybots/memebot
+Environment="HOME=/home/dan"
+ExecStart=/bin/bash -l -c 'PATH=/home/dan/go/bin/:$PATH bash memebot.sh'
 Restart=on-failure
 RestartSec=10
 KillMode=process
