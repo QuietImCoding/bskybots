@@ -20,7 +20,7 @@ send_reply() {
 
 while true;
 do
-    bsky stream --pattern '(?i)/honk' | jq --unbuffered -r '"at://"+.did+"/"+.path' | send_reply &
+    bsky stream --pattern '(?i)/honk' | jq --unbuffered -r '"at://"+.did+"/"+.path' | send_reply
 done
 
 	
