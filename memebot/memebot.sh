@@ -23,4 +23,3 @@ send_reply() {
 }
 
 bsky stream --pattern '(?i)/meme' | jq -r --unbuffered '"at://"+.did+"/"+.path' | send_reply
-## send_meme at://did:plc:jlqiqmhalnu5af3pf56jryei/app.bsky.feed.post/3judj7yxh2s2f
