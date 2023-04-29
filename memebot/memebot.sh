@@ -22,4 +22,6 @@ send_reply() {
     done
 }
 
-bsky stream --pattern '(?i)/meme' | jq -r --unbuffered '"at://"+.did+"/"+.path' | send_reply
+while true; do 
+    bsky stream --pattern '(?i)/meme' | jq -r --unbuffered '"at://"+.did+"/"+.path' | send_reply
+done

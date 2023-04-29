@@ -10,4 +10,6 @@ send_reply() {
     done
 }
 
-bsky stream --pattern '(?i)/beemovie' | jq -r --unbuffered '"at://"+.did+"/"+.path' | send_reply
+while true; do
+    bsky stream --pattern '(?i)/beemovie' | jq -r --unbuffered '"at://"+.did+"/"+.path' | send_reply
+done

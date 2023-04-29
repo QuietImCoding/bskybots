@@ -18,4 +18,7 @@ send_reply() {
     done
 }
 
-bsky stream --pattern /beemoviebomb | jq -r --unbuffered '"at://"+.did+"/"+.path' | send_reply
+## This should help with reliability
+while true; do
+    bsky stream --pattern /beemoviebomb | jq -r --unbuffered '"at://"+.did+"/"+.path' | send_reply
+done

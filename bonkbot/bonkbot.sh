@@ -17,4 +17,6 @@ send_reply() {
     done
 }
 
-bsky stream --json --pattern '(?i)/bonk' | jq -r --unbuffered '"at://"+.did+"/"+.path' | send_reply
+while true; do
+    bsky stream --json --pattern '(?i)/bonk' | jq -r --unbuffered '"at://"+.did+"/"+.path' | send_reply
+done
