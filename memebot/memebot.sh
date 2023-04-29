@@ -8,7 +8,8 @@ send_meme() {
     fontsize=$((2000/(((${#text}+1)/7)**2+1)))
     fontsize=$((fontsize>20 ? $fontsize : 20))
     fontsize=$((fontsize<50 ? $fontsize : 50))
-    convert "./templates/${template}.png" -gravity South -size 800x -pointsize $fontsize -annotate +0+100 "$text" $PWD/$tmpfname
+    #convert "./templates/${template}.png" -gravity South -size 800x -pointsize $fontsize caption:"$text" +swap -append +0+800  $PWD/$tmpfname
+    convert "./templates/${template}.png" \( \( -gravity north -splice 0x50 \) -size 800x -pointsize 30 caption:"$text" \( -gravity south -splice 0x50 \)  \) $PWD/$tmpfname
     echo "Created image with text $text in $PWD/$tmpfname"
     bsky post -r $1 -i $PWD/$tmpfname "$template meme with text: $text" && rm $tmpfname
 }
