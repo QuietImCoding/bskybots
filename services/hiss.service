@@ -1,0 +1,15 @@
+[Unit]
+Description=Run hissbot service
+
+[Service]
+Type=simple
+WorkingDirectory=/home/dan/bskybots/honkbot
+Environment="HOME=/home/dan"
+ExecStart=/bin/bash -l -c 'PATH=/home/dan/go/bin/:$PATH bash hissr.sh'
+Restart=on-failure
+RestartSec=10
+KillMode=process
+
+
+[Install]
+WantedBy=multi-user.target
