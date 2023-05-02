@@ -11,5 +11,5 @@ send_reply() {
 }
 
 while true; do
-    bsky stream --pattern '(?i)/beemovie' 2>/dev/null | jq -r --unbuffered '"at://"+.did+"/"+.path' | send_reply
+    bsky stream --json --pattern '(?i)/beemovie' 2>/dev/null | jq -r --unbuffered '"at://"+.did+"/"+.path' | send_reply
 done

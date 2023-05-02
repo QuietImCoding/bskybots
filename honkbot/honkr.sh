@@ -26,8 +26,7 @@ send_reply() {
 
 while true;
 do
-    get_goose
-    # bsky stream --pattern '(?i)/honk' 2>/dev/null | jq --unbuffered -r '"at://"+.did+"/"+.path' | send_reply
+    bsky stream --json --pattern '(?i)/honk' 2>/dev/null | jq --unbuffered -r '"at://"+.did+"/"+.path' | send_reply
 done
 
 	
