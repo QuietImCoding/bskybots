@@ -13,7 +13,7 @@ get_puppy() {
 
 bork() { 
     get_puppy
-    bsky post -r "$1" -i "$PWD/pupper.jpg" BORK
+    bsky post -r "$1" -i "$PWD/puppy.jpg" BORK
     echo "BORKED AT $1"
 }
 
