@@ -6,6 +6,7 @@ Type=simple
 WorkingDirectory=/home/dan/bskybots/bonkbot
 Environment="HOME=/home/dan"
 ExecStart=/bin/bash -l -c 'PATH=/home/dan/go/bin/:$PATH bash bonkbot.sh'
+ExecStop=/bin/kill -- $MAINPID
 Restart=on-failure
 RestartSec=10
 KillMode=process
