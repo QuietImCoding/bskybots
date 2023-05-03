@@ -1,5 +1,4 @@
-echo sudo systemctl daemon-reload
-for service in $(ls services);
-do
-    echo sudo systemctl restart $service
-done
+sudo systemctl stop $1
+ps aux | grep $1 | awk '{ print $2 }' | sudo xargs kill
+sudo killall bsky
+sudo systemctl start $1
