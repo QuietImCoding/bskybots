@@ -1,0 +1,16 @@
+[Unit]
+Description=Run honkbot service
+
+[Service]
+Type=simple
+WorkingDirectory=/home/dan/bskybots/honkbot
+Environment="HOME=/home/dan"
+ExecStart=/bin/bash -l -c 'PATH=/home/dan/go/bin/:$PATH bash hootr.sh'
+ExecStop=/bin/kill -- $MAINPID
+Restart=on-failure
+RestartSec=10
+KillMode=process
+
+
+[Install]
+WantedBy=multi-user.target
