@@ -13,8 +13,8 @@ get_kitty() {
 
 meow() { 
     get_kitty
-    bsky post -r "$1" -i "$PWD/kitty.jpg" HONK
-    echo "HONKED AT $1"
+    bsky post -r "$1" -i "$PWD/kitty.jpg" MEOW
+    echo "MEOWED AT $1"
 }
 
 send_reply() {

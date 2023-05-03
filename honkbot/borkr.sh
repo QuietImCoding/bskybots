@@ -13,8 +13,8 @@ get_puppy() {
 
 bork() { 
     get_puppy
-    bsky post -r "$1" -i "$PWD/puppy.jpg" HONK
-    echo "HONKED AT $1"
+    bsky post -r "$1" -i "$PWD/pupper.jpg" BORK
+    echo "BORKED AT $1"
 }
 
 send_reply() {
