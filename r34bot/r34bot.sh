@@ -4,7 +4,8 @@ get_nude() {
     fname=$(echo $text | tr -cd '[:alpha:]')
     uri=$(echo $text | jq -Rr '.|@uri')
     echo $uri
-    curl -s "https://api.rule34.xxx/index.php?page=dapi&s=post&q=index&json=1&limit=100&tags=$uri" | jq -r '.[] | .sample_url' | grep 'jpg$' | shuf | head -n 1 | xargs wget -O $fname.jpg
+    curl -s "https://api.rule34.xxx/index.php?page=dapi&s=post&q=index&json=1&limit=100&tags=$uri" | jq -r '.[] | .sample_url' | grep 'jpg$' | shuf | head -n 1 | xargs wget -O $fname.jpg ||
+	( bsky post -r "$1" -i "$PWD/iknowhatyouare.jpg" nice try && return )
     imsize=$(du -k $fname.jpg | awk '{ print $1 }')
     if [[ $imsize -gt 1000 ]]; then
 	echo "$fname was to big... shrinking"
@@ -27,7 +28,7 @@ send_reply() {
 
 while true;
 do
-    bsky stream --json --pattern '(?i)/rule34' 2>/dev/null | jq --unbuffered -r '"at://"+.did+"/"+.path' | send_reply
+    bsky stream --json --pattern '(?i)^/rule34' 2>/dev/null | jq --unbuffered -r '"at://"+.did+"/"+.path' | send_reply
 done
 
 	
