@@ -14,7 +14,7 @@ get_nude() {
 	echo "$fname is now $imsize kb"
     fi
     echo $fname
-    bsky post -r "$1" -i "$PWD/$fname.jpg" $text
+    bsky post -r "$1" -i "$PWD/$fname.jpg" "CONTENT WARNING - RULE34 IMAGE: $text"
     echo "posted $fname AT $1"
     rm $fname.jpg
 }
