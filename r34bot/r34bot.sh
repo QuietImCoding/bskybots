@@ -2,9 +2,9 @@ get_nude() {
     post=$(bsky thread --json "$1" | jq -r '.post.record.text')
     text="$(echo $post | cut -d' ' -f2-)"
     fname=$(echo $text | tr -cd '[:alpha:]')
-    uri=$(echo $text | tr ' ' '_' | jq -Rr '.|@uri')
+    uri=$(echo $text | jq -Rr '.|@uri')
     echo $uri
-    curl -s "https://api.rule34.xxx/index.php?page=dapi&s=post&q=index&json=1&limit=100&tags=$uri" | tee results | jq -r '.[] | .sample_url' | grep 'jpg$' | shuf | head -n 1 | xargs wget -O $fname.jpg
+    curl -s "https://api.rule34.xxx/index.php?page=dapi&s=post&q=index&json=1&limit=100&tags=$uri" | jq -r '.[] | .sample_url' | grep 'jpg$' | shuf | head -n 1 | xargs wget -O $fname.jpg
     imsize=$(du -k $fname.jpg | awk '{ print $1 }')
     if [[ $imsize -gt 1000 ]]; then
 	echo "$fname was to big... shrinking"
