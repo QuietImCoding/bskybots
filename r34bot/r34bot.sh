@@ -5,7 +5,7 @@ get_nude() {
     uri=$(echo $text | jq -Rr '.|@uri')
     echo $uri
     curl -s "https://api.rule34.xxx/index.php?page=dapi&s=post&q=index&json=1&limit=100&tags=$uri" | jq -r '.[] | .sample_url' | grep 'jpg$' | shuf | head -n 1 | xargs wget -O $fname.jpg ||
-	( bsky post -r "$1" -i "$PWD/iknowhatyouare.jpg" nice try && return )
+	( bsky -a rule34 post -r "$1" -i "$PWD/iknowhatyouare.jpg" nice try && return )
     imsize=$(du -k $fname.jpg | awk '{ print $1 }')
     if [[ $imsize -gt 1000 ]]; then
 	echo "$fname was to big... shrinking"
@@ -14,7 +14,7 @@ get_nude() {
 	echo "$fname is now $imsize kb"
     fi
     echo $fname
-    bsky post -r "$1" -i "$PWD/$fname.jpg" "CONTENT WARNING - RULE34 IMAGE: $text"
+    bsky -a rule34 post -r "$1" -i "$PWD/$fname.jpg" "CONTENT WARNING - RULE34 IMAGE: $text"
     echo "posted $fname AT $1"
     rm $fname.jpg
 }
