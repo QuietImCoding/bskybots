@@ -1,11 +1,11 @@
 [Unit]
-Description=Run honkbot service
+Description=Run ribbit service
 
 [Service]
 Type=simple
 WorkingDirectory=/home/dan/bskybots/honkbot
 Environment="HOME=/home/dan"
-ExecStart=/bin/bash -l -c 'PATH=/home/dan/go/bin/:$PATH bash ribbit.sh'
+ExecStart=/bin/bash -l -c 'PATH=/home/dan/go/bin/:$PATH bash ribbitr.sh'
 Restart=on-failure
 RestartSec=10
 KillMode=process
